@@ -19,7 +19,8 @@ import java.util.concurrent.CountDownLatch;
 
 public class DistributedLock {
 
-    private final String connectionString = "192.168.230.128:2181";
+//    private final String connectionString = "192.168.230.128:2181";
+    private final String connectionString = "10.3.7.185:2181";
     private final int sessionTimeout = 10000;
     private ZooKeeper zkClient;
 
@@ -99,7 +100,7 @@ public class DistributedLock {
                 int index = children.indexOf(thisNode);
                 if (index == -1) {
                     System.out.println("说明不存在？不可能有这种情况啊，上面刚特么新增的");
-                }else if(index == 0){ // 说明他就是第一位
+                }else if(index == 0){ // 说明他就是第一位，直接获取锁
                     return;
                 }else { // 他不是第一个，需要监听它上面的那个节点的变化
                     // 拿到他上面的那个节点的路径

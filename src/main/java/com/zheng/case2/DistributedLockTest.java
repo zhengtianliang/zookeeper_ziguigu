@@ -25,7 +25,7 @@ public class DistributedLockTest {
                 }
 
             }
-        });
+        }).start();
 
         new Thread(new Runnable() {
             public void run() {
@@ -41,7 +41,7 @@ public class DistributedLockTest {
                 }
 
             }
-        });
+        }).start();
 
     }
 }
